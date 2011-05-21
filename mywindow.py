@@ -19,11 +19,21 @@ class Base:
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         self.window.set_size_request(600, 100)
         self.window.set_position(gtk.WIN_POS_CENTER)
+        self.window.set_title("Insert Awesome Title Here!") # Set the title of the window
+        self.window.set_tooltip_text("I am the main window") # Set the tooltip of the window
+        self.window.set_icon_from_file("icon.svg") # Set the Window icon to the icon specified
+
         self.button1 = gtk.Button("Exit") # Define a new button
         self.button1.connect("clicked", self.destroy) # Make the button run the destroy function when clicked
+        self.button1.set_tooltip_text("I will close the program if you click me!") # Set the tooltip of the button
         
+        self.label1 = gtk.Label("Click Me -->")
+
         fixed = gtk.Fixed()
         fixed.put(self.button1, 300, 30)
+        fixed.put(self.label1, 200, 35)
+
+
         
         self.window.add(fixed) # Add the fixed object (containing the button) to the window
         self.window.show_all() # Show the window and all widgets
