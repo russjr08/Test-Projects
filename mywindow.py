@@ -43,7 +43,7 @@ class Base:
         self.label1 = gtk.Label("Click Me -->") # Create a new label
         self.about_button = gtk.Button("About") # Create an About Button
         self.about_button.connect("clicked", self.about_window) # Connect the button to run the about window function when clicked
-        self.about_button.set_tooltip_text("Open the About Window")
+        self.about_button.set_tooltip_text("Open the About Window") # Set the tooltip function for the about button
 
         fixed = gtk.Fixed() # Create a new fixed object
         fixed.put(self.button1, 300, 30) # Add button to fixed object
@@ -62,5 +62,8 @@ if __name__ == "__main__":
     base.main() # Run the main function in the Base class
 else:
     print "I need to be run by myself please, I will now quit this application"
+    em = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "I need to be run myself please, I will now quit this application")
+    em.run()
+    em.destroy()
     raise SystemExit
     # If not running by itself, display a message, and close the program
