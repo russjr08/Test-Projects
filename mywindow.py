@@ -14,6 +14,19 @@ class Base:
         # Set up a way to close the actual program process
         gtk.main_quit()
         print "You have closed me"
+
+    def about_window(self, widget):
+        # Create an About Window and it's details
+        about = gtk.AboutDialog()
+        about.set_program_name("A PyGTK App")
+        about.set_version("1.0b")
+        about.set_copyright("(c) Russell Richardson")
+        about.set_comments("This is a PyGTK app that doesn't do much")
+        about.set_website("https://github.com/russjr08/Test-Projects")
+        about.set_logo(gtk.gdk.pixbuf_new_from_file("icon.svg"))
+        about.run()
+        about.destroy()
+
     def __init__(self):
         # Setting up the Window object and it's settings
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -27,12 +40,15 @@ class Base:
         self.button1.connect("clicked", self.destroy) # Make the button run the destroy function when clicked
         self.button1.set_tooltip_text("I will close the program if you click me!") # Set the tooltip of the button
         
-        self.label1 = gtk.Label("Click Me -->")
+        self.label1 = gtk.Label("Click Me -->") # Create a new label
+        self.about_button = gtk.Button("About") # Create an About Button
+        self.about_button.connect("clicked", self.about_window) # Connect the button to run the about window function when clicked
+        self.about_button.set_tooltip_text("Open the About Window")
 
-        fixed = gtk.Fixed()
-        fixed.put(self.button1, 300, 30)
-        fixed.put(self.label1, 200, 35)
-
+        fixed = gtk.Fixed() # Create a new fixed object
+        fixed.put(self.button1, 300, 30) # Add button to fixed object
+        fixed.put(self.label1, 200, 35) # Add label to fixed object
+        fixed.put(self.about_button, 400, 30) # Add About button to fixed object
 
         
         self.window.add(fixed) # Add the fixed object (containing the button) to the window
@@ -46,5 +62,5 @@ if __name__ == "__main__":
     base.main() # Run the main function in the Base class
 else:
     print "I need to be run by myself please, I will now quit this application"
-    quit()
+    raise SystemExit
     # If not running by itself, display a message, and close the program
