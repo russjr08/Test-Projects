@@ -6,12 +6,14 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 
+
 # Our main class
 class Base:
 
     def destroy(self, widget, data=None):
         # Set up a way to close the actual program process
         gtk.main_quit()
+        print "You have closed me"
     def __init__(self):
         # Setting up the Window object and it's settings
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
