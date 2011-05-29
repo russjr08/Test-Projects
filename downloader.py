@@ -53,6 +53,7 @@ class Base:
     	self.window.add(vbox)
     	self.window.show_all()
     	self.window.connect("destroy", self.destroy)
+    	self.window.set_icon_from_file("icon.svg")
     	
     def main(self):
     	gtk.main()
