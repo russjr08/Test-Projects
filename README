@@ -1,1 +1,7 @@
-Hello World!
+mywindow.py is a simple PyGTK app
+
+downloader.py is an app I wrote in Python/PyGTK that can be used to download any file, just input the location, then click "Download"
+WARNING: There is no output for the progress of the download if you do not run this file from the terminal (if you get errors, run chmod + x downloader.py) so don't close the app before the download is complete...
+
+Dependencies of downloader.py:
+wget

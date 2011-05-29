@@ -20,6 +20,7 @@ class Base:
     	
     	
     	cmd = "wget " + str(text) + " -O " + str(chooser.get_filename())
+    	#cmd2 = "wget " + str(text) R"2>&1 | sed -u 's/.*\ \([0-9]\+%\)\ \+\([0-9.]\+\ [KMB\/s]\+\)$/\1\n# Downloading \2/' | zenity --progress --auto-kill -O " + str(chooser.get_filename()) << I want this to work :(
     	
     	if response == gtk.RESPONSE_OK:
     		os.popen(cmd)
