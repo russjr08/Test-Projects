@@ -3,6 +3,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import os
+import urllib
 
 class Base:
     def destroy(self, widget, data=None):
@@ -22,15 +23,16 @@ class Base:
     	
     	
     	
-    	cmd = "wget " + str(text) + " -O " + str(chooser.get_filename()) # The cmd to download the file
+    	#cmd = "wget " + str(text) + " -O " + str(chooser.get_filename()) # The cmd to download the file
     	#cmd2 = "wget " + str(text) R"2>&1 | sed -u 's/.*\ \([0-9]\+%\)\ \+\([0-9.]\+\ [KMB\/s]\+\)$/\1\n# Downloading \2/' | zenity --progress --auto-kill -O " + str(chooser.get_filename()) << I want this to work :(
     	
     	'''Runs the cmd from above and downloads the file to the specified directory in
     	the file chooser'''
     	if response == gtk.RESPONSE_OK:
-    		os.popen(cmd)
+    		#os.popen(cmd)
+    		urllib.urlretrieve(str(text),str(chooser.get_filename()))
 
-	chooser.destroy() # Closes the file chooser object
+        chooser.destroy()
         
 
     def __init__(self):
@@ -68,6 +70,8 @@ class Base:
 if __name__ == "__main__":
 	base = Base()
 	base.main()
+	
+else:
 	print "I need to be run by myself please, I will now exit the app"
 	
 	em = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, gtk.BUTTONS_CLOSE, "I need to be run myself please, I will now quit this application")
