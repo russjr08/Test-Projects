@@ -29,8 +29,8 @@ class Base:
     	'''Runs the cmd from above and downloads the file to the specified directory in
     	the file chooser'''
     	if response == gtk.RESPONSE_OK:
-    		#os.popen(cmd)
-    		urllib.urlretrieve(str(text),str(chooser.get_filename()))
+    		#os.popen(cmd) <<-- Old Method
+    		urllib.urlretrieve(str(text),str(chooser.get_filename())) # Downloads the file in the file chooser and saves it as what the file chooser says. Thanks johnl!!
 
         chooser.destroy()
         

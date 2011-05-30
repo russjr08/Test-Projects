@@ -4,4 +4,8 @@ downloader.py is an app I wrote in Python/PyGTK that can be used to download any
 WARNING: There is no output for the progress of the download if you do not run this file from the terminal (if you get errors, run chmod + x downloader.py) so don't close the app before the download is complete...
 
 Dependencies of downloader.py:
-wget
+PyGTK
+Python
+
+Credits:
+johnl for pointing out that I don't need to use wget, and python has a built in function
